@@ -10,8 +10,8 @@ const PORT = process.env.PORT || 5000;
 app.use(cors({
   origin: [
     'http://localhost:3000',
-    'https://votre-domaine-vercel.vercel.app',
-    'https://votre-domaine-custom.com'
+    'https://landing-page-talk-635k.vercel.app', // Votre vrai domaine Vercel
+    'https://talksocialapp.com'  // Si vous avez un domaine personnalisé
   ],
   methods: ['GET', 'POST'],
   credentials: true,
@@ -22,8 +22,8 @@ app.use(express.json());
 // Connexion à Airtable
 const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.AIRTABLE_BASE_ID);
 
-// Route pour l'inscription
-app.post("/api/subscribe", async (req, res) => {
+// Route pour l'inscription - changée pour correspondre au frontend
+app.post("/subscribe", async (req, res) => {  // Retiré /api/
     try {
         const { email } = req.body;
 
@@ -41,10 +41,10 @@ app.post("/api/subscribe", async (req, res) => {
             }
         ]);
 
-        res.json({ message: "Successfully subscribed!" });
+        res.json({ message: "🎉 You have been added to the wait list!" }); // Message cohérent avec le frontend
     } catch (error) {
         console.error("Error:", error);
-        res.status(500).json({ message: "Server error. Please try again." });
+        res.status(500).json({ message: "An error occurred. Please try again." }); // Message cohérent avec le frontend
     }
 });
 
