@@ -11,7 +11,7 @@ app.use(cors({
   origin: [
     'http://localhost:3000',
     'https://landing-page-talk-635k.vercel.app', // Votre vrai domaine Vercel
-    'https://talksocialapp.com'  // Si vous avez un domaine personnalisé
+    'https://www.talksocialapp.com/'  // Si vous avez un domaine personnalisé
   ],
   methods: ['GET', 'POST'],
   credentials: true,
