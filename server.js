@@ -8,16 +8,19 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'https://landing-page-talk-635k.vercel.app', // Votre vrai domaine Vercel
-    'https://www.talksocialapp.com/'  // Si vous avez un domaine personnalisé
-  ],
-  methods: ['GET', 'POST'],
-  credentials: true,
-  optionsSuccessStatus: 200
-}));
+    origin: [
+      'http://localhost:3000',
+      'https://landing-page-talk-635k.vercel.app',
+      'https://www.talksocialapp.com',  // Sans le / à la fin
+      'https://talksocialapp.com'       // Ajout du domaine sans www
+    ],
+    methods: ['GET', 'POST'],
+    credentials: true,
+    optionsSuccessStatus: 200
+  }));
 app.use(express.json());
+
+
 
 // Connexion à Airtable
 const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.AIRTABLE_BASE_ID);
